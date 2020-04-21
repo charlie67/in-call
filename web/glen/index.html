@@ -1,0 +1,40 @@
+<script>
+function sendPost(endpointArgs) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+             console.log(this.responseText);
+         }
+    };
+    xhttp.open("POST", "http://www.isglenonacall.co.uk/api/set-in-call?" + endpointArgs, false);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+}
+
+function sendNotOnCall() {
+    sendPost('inCall=false');
+}
+
+function sendOnCall() {
+    sendPost('inCall=true');
+}
+</script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../styles.css">
+    <title>Set call status</title>
+  </head>
+
+  <body>
+     
+    <h1> Glen, are you on a call?</h1>
+     
+    <div class="buttonHolder">
+      <button type="On_Call" onclick="sendOnCall()">On A Call</button>
+     
+      <button type="No_Call" onclick="sendNotOnCall()">Not On Call</button>
+    </div>
+
+  </body>
+</html>

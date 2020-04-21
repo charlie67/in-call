@@ -1,0 +1,28 @@
+#response-text {
+    font-size: 72;
+    text-align: center;
+}
+
+h1 {
+    font-size: 60;
+    text-align: center;
+    color: #E8E6E3;
+}
+
+html {
+    background-color: #181A1B;
+}
+
+button {
+    background-color: #181A1B;
+    color: white;
+    text-align: center;
+    font-size: 36px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #25ACD9;
+}
+
+.buttonHolder{ text-align: center; }

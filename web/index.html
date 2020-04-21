@@ -1,0 +1,41 @@
+<script>
+function getOnCallStatus() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+             jsonResponse = JSON.parse(this.responseText);
+             inCall = jsonResponse['inCall']
+             console.log(inCall)
+             if (inCall)
+             {
+              document.getElementById("response-text").innerHTML = "YES";
+              $('#response-text').css('color', '#FF3333');
+             }
+             else
+             {
+              document.getElementById("response-text").innerHTML = "NO!";
+              $('#response-text').css('color', 'green');
+             }
+         }
+    };
+    xhttp.open("GET", "http://www.isglenonacall.co.uk/api/inCall", false);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+}
+</script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>www.isglenonacall.co.uk</title>
+  </head>
+
+  <body onload="getOnCallStatus()">
+     
+    <h1>Is Glen on a call?</h1>
+
+    <h2 id="response-text"></h2>
+
+  </body>
+</html>
