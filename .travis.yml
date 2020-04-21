@@ -5,4 +5,4 @@ services:
 
 script:
   - "./web/build-docker.sh"
-  - "./python/docker-build.sh"
+  - "./python/build-docker.sh"
