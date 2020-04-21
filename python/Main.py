@@ -9,6 +9,7 @@ app = Flask(__name__)
 CORS(app)
 
 mongo_address = os.environ['MONGO_DATABASE']
+logging.debug("mongo address is", mongo_address)
 client = MongoClient(mongo_address)
 db = client.local
 collection = db.working
