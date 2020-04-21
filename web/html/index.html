@@ -1,5 +1,5 @@
 <script>
-function getOnCallStatus() {
+function getInCallStatus() {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
          if (this.readyState == 4 && this.status == 200) {
@@ -31,7 +31,7 @@ function getOnCallStatus() {
     <title>www.isglenonacall.co.uk</title>
   </head>
 
-  <body onload="getOnCallStatus()">
+  <body onload="getInCallStatus()">
      
     <h1>Is Glen on a call?</h1>
 

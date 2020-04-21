@@ -9,6 +9,12 @@ h1 {
     color: #E8E6E3;
 }
 
+h2 {
+    font-size: 40;
+    text-align: center;
+    color: #E8E6E3;
+}
+
 html {
     background-color: #181A1B;
 }

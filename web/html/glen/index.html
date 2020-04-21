@@ -11,12 +11,40 @@ function sendPost(endpointArgs) {
     xhttp.send();
 }
 
-function sendNotOnCall() {
-    sendPost('inCall=false');
+function getInCallStatus() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+         if (this.readyState == 4 && this.status == 200) {
+             jsonResponse = JSON.parse(this.responseText);
+             inCall = jsonResponse['inCall']
+             console.log(inCall)
+             if (inCall)
+             {
+              document.getElementById("response-text").innerHTML = "Current status: ON A CALL";
+              $('#response-text').css('color', '#FF3333');
+             }
+             else
+             {
+              document.getElementById("response-text").innerHTML = "Current status: NOT ON A CALL";
+              $('#response-text').css('color', 'green');
+             }
+         }
+    };
+    xhttp.open("GET", "/api/inCall", false);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
 }
 
-function sendOnCall() {
+function sendNotInCall() {
+    sendPost('inCall=false');
+    document.getElementById("response-text").innerHTML = "Current status: NOT ON A CALL";
+    $('#response-text').css('color', 'green');
+}
+
+function sendInCall() {
     sendPost('inCall=true');
+    document.getElementById("response-text").innerHTML = "Current status: ON A CALL";
+    $('#response-text').css('color', '#FF3333');
 }
 </script>
 <!DOCTYPE html>
@@ -26,15 +54,17 @@ function sendOnCall() {
     <title>Set call status</title>
   </head>
 
-  <body>
+  <body onload="getInCallStatus()">
      
     <h1> Glen, are you on a call?</h1>
      
     <div class="buttonHolder">
-      <button type="On_Call" onclick="sendOnCall()">On A Call</button>
+      <button type="On_Call" onclick="sendInCall()">On A Call</button>
      
-      <button type="No_Call" onclick="sendNotOnCall()">Not On Call</button>
+      <button type="No_Call" onclick="sendNotInCall()">Not On Call</button>
     </div>
+    
+    <h2 id="responseText"></h2>
 
   </body>
 </html>
