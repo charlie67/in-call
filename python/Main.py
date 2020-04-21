@@ -41,5 +41,5 @@ if __name__ == '__main__':
         default_value = {"inCall": False}
         collection.insert_one(default_value)
 
-    app.run(host="0.0.0.0", debug=True)
+    app.run(host="0.0.0.0", debug=False)
     app.logger.setLevel(logging.INFO)
