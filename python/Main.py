@@ -9,10 +9,10 @@ import logging
 app = Flask(__name__)
 CORS(app)
 
-mongo_address = os.environ['MONGO_DATABASE']
+mongo_host = os.environ['MONGO_HOST']
 logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
-logging.error("mongo address is " + mongo_address)
-client = MongoClient(mongo_address)
+logging.error("mongo address is " + mongo_host)
+client = MongoClient(mongo_host, 27017)
 db = client.local
 collection = db.working
 
