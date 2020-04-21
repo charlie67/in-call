@@ -1,4 +1,5 @@
 import os
+import sys
 
 from pymongo import MongoClient
 from flask import Flask, request, jsonify
@@ -9,6 +10,7 @@ app = Flask(__name__)
 CORS(app)
 
 mongo_address = os.environ['MONGO_DATABASE']
+logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
 logging.debug("mongo address is", mongo_address)
 client = MongoClient(mongo_address)
 db = client.local
